@@ -1,4 +1,5 @@
 import cv2
+from matplotlib import pyplot as plt
 
 from constant_variable import IMAGE_PATH
 
@@ -23,8 +24,16 @@ class ImageReader():
         cv2.waitKey(-1)
         cv2.destroyAllWindows()
 
+    @staticmethod
+    def plot_image(image, title):
+        plt.xticks([])
+        plt.yticks([])
+        plt.imshow(image, cmap='gray')
+        plt.title(title)
+        plt.show()
+
 
 if __name__ == "__main__":
     window_title, input_image = ImageReader.read_image_greyscale(IMAGE_PATH)
-    ImageReader.show_image(window_title, input_image)
+    ImageReader.plot_image(input_image, window_title)
 
