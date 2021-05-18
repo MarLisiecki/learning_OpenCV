@@ -33,7 +33,7 @@ class VideoManipulation():
                 start_vector_x += 1
                 start_vector_y += 1
                 translation_matrix = np.float32([[1, 0, start_vector_x], [0, 1, start_vector_y]])
-                translated_frame = cv2.warpAffine(video_frame, translation_matrix ,(width,height))
+                translated_frame = cv2.warpAffine(video_frame, translation_matrix, (width, height))
                 cv2.imshow('Video dynamic translation', translated_frame)
                 break_key = cv2.waitKey(40)
                 if break_key == ord('q'):  # q like quit
@@ -42,14 +42,15 @@ class VideoManipulation():
                 break
         self.capture.release()
         cv2.destroyAllWindows()
+
     def show_rotated_video(self, start_angle):
         while self.capture.isOpened():
             correct_read, video_frame = self.capture.read()
             if correct_read:
                 height, width = video_frame.shape[:2]
                 start_angle += 1
-                rotation_matrix = cv2.getRotationMatrix2D(((width-1)/2.0,(height-1)/2.0), start_angle, 1)
-                rotated_frame = cv2.warpAffine(video_frame, rotation_matrix,(width,height))
+                rotation_matrix = cv2.getRotationMatrix2D(((width - 1) / 2.0, (height - 1) / 2.0), start_angle, 1)
+                rotated_frame = cv2.warpAffine(video_frame, rotation_matrix, (width, height))
                 cv2.imshow('Video dynamic translation', rotated_frame)
                 break_key = cv2.waitKey(40)
                 if break_key == ord('q'):  # q like quit

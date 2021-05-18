@@ -8,6 +8,7 @@ class ImageReader():
     @staticmethod
     def read_image_color(image_path):
         image_with_color = cv2.imread(image_path, cv2.IMREAD_UNCHANGED)
+        image_with_color = cv2.cvtColor(image_with_color, cv2.COLOR_BGR2RGB)
         title = "Image in color"
         return title, image_with_color
 
@@ -25,7 +26,7 @@ class ImageReader():
         cv2.destroyAllWindows()
 
     @staticmethod
-    def plot_image(image, title):
+    def plot_image(image, title: str):
         plt.xticks([])
         plt.yticks([])
         plt.imshow(image, cmap='gray')

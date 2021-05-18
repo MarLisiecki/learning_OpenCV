@@ -13,7 +13,6 @@ class VideoReader():
     def show_video(capture):
         while capture.isOpened():
             correct_read, video_frame = capture.read()
-
             if correct_read:
                 cv2.imshow('Video', video_frame)
                 break_key = cv2.waitKey(40)
@@ -26,5 +25,5 @@ class VideoReader():
 
 
 if __name__ == "__main__":
-    video_capture = VideoReader.create_capture(VIDEO_SOURCE[1])
+    video_capture = VideoReader.create_capture(VIDEO_SOURCE[0])
     VideoReader.show_video(video_capture)
